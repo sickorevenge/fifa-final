@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Словарь</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <header>
+       <img src="img/logo.png" alt="Логотип FIFA" class="logo-img">
+        <nav>
+           <ul>
+            <li><a href="main.html">Главная</a></li>
+            <li><a href="description.html">Описание</a></li>
+            <li><a href="dictionary.html">Словарь</a></li>
+            <li><a href="slider.html">Галерея</a></li>
+            <li><a href="test.html">Тест</a></li>
+             <li><a href="profile.html">Профиль</a></li>
+           </ul>
+        </nav>
+         <div class="user-info">
+            <span class="profile-name" id="profileName"></span>
+            <button class="logout-btn" id="logoutButton">Выйти</button>
+        </div>
+    </header>
+    <main>
+        <section id="dictionary">
+            <h2>Словарь</h2>
+            <input type="text" id="search" placeholder="Поиск слова">
+            <div class="dictionary-container">
+                <ul id="wordList" class="dictionary-list">
+                    <li data-definition="Обманное движение корпусом, чтобы сбить с толку противника.">Финт Зидана</li>
+                    <li data-definition="Удар через себя в прыжке.">Бисиклета</li>
+                    <li data-definition="Передача мяча между ног противника.">Прокид</li>
+                    <li data-definition="Движение, имитирующее удар, для обмана противника.">Ложный замах</li>
+                    <li data-definition="Удар по мячу снизу, чтобы он полетел по высокой траектории.">Чип-удар</li>
+                    <li data-definition="Стиль игры в короткий пас, с частыми перемещениями.">Тики-Така</li>
+                    <li data-definition="Тактика, в которой команда активно отбирает мяч на половине поля соперника.">Прессинг</li>
+                    <li data-definition="Стандартное положение, при котором команда получает право на удар по воротам с определенной позиции.">Свободный удар</li>
+                    <li data-definition="Положение игрока, при котором он находится ближе к воротам соперника, чем мяч и предпоследний игрок команды соперника.">Офсайд</li>
+                    <li data-definition="Точный удар в голову противника.">Хэдшот</li>
+                </ul>
+                 <div class="definition-container"> <p id="definition"></p></div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <div class="contact-info">
+                 <h3>Контактные данные</h3>
+                    <p>Телефон: <a href="#">+7 (XXX) XXX-XX-XX</a></p>
+                     <div class="social-links">
+                        <a href="#">VK</a>
+                         <a href="#">Telegram</a>
+                     </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2024 FIFA </p>
+            </div>
+        </div>
+    </footer>
+         <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const footer = document.querySelector('footer');
+                function checkScroll() {
+                    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+                    footer.classList.add('visible');
+                    } else {
+                       footer.classList.remove('visible');
+                    }
+                }
+                window.addEventListener('scroll', checkScroll);
+                checkScroll();
+        
+                const wordList = document.getElementById('wordList');
+                const definitionDisplay = document.getElementById('definition');
+                   const profileNameSpan = document.getElementById('profileName');
+                     const logoutButton = document.getElementById('logoutButton');
+                 const userLogin = localStorage.getItem('userLogin');
+           if (userLogin) {
+                 profileNameSpan.textContent = userLogin;
+                 logoutButton.style.display = 'inline-block';
+
+
+                 logoutButton.addEventListener('click', function() {
+                    localStorage.removeItem('userLogin');
+                    localStorage.removeItem('userDate');
+                    localStorage.removeItem('userGender');
+                     localStorage.removeItem('testScore');
+                    window.location.href = 'index.html';
+                   });
+           } else {
+                logoutButton.style.display = 'none';
+            }
+        
+                wordList.addEventListener('click', function(event) {
+                    if (event.target && event.target.tagName === 'LI') {
+                        const definition = event.target.getAttribute('data-definition');
+                        definitionDisplay.textContent = definition;
+                        wordList.querySelectorAll('li').forEach(li => li.classList.remove('selected'));
+                        event.target.classList.add('selected');
+                    }
+                });
+
+                const searchInput = document.getElementById('search');
+                searchInput.addEventListener('input', function() {
+                    const searchTerm = searchInput.value.toLowerCase();
+                    const listItems = wordList.querySelectorAll('li');
+
+                    listItems.forEach(item => {
+                        const text = item.textContent.toLowerCase();
+                        if (text.includes(searchTerm)) {
+                            item.style.display = '';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+
+            });
+        </script>
+    <script src="js/main.js"></script>
+</body>
+</html>

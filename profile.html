@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Профиль</title>
+     <link rel="stylesheet" href="css/style.css">
+       <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <img src="img/logo.png" alt="Логотип FIFA" class="logo-img">
+        <nav>
+           <ul>
+            <li><a href="main.html">Главная</a></li>
+            <li><a href="description.html">Описание</a></li>
+            <li><a href="dictionary.html">Словарь</a></li>
+            <li><a href="slider.html">Галерея</a></li>
+            <li><a href="test.html">Тест</a></li>
+             <li><a href="profile.html">Профиль</a></li>
+           </ul>
+        </nav>
+         <div class="user-info">
+            <span class="profile-name" id="profileName"></span>
+            <button class="logout-btn" id="logoutButton">Выйти</button>
+        </div>
+    </header>
+    <main>
+        <section id="profile">
+            <h2>Профиль</h2>
+             <div class="profile-info">
+            <p>Здесь будет информация о профиле пользователя.</p>
+            <p>Логин: <span id="profile-login"></span></p>
+             <p>Дата рождения: <span id="profile-date"></span></p>
+            <p>Пол: <span id="profile-gender"></span></p>
+           <p>Количество правильных ответов в тесте: <span id="profile-score"></span></p>
+        </div>
+        </section>
+    </main>
+   <footer>
+         <div class="footer-content">
+            <div class="contact-info">
+                 <h3>Контактные данные</h3>
+                    <p>Телефон: <a href="#">+7 (XXX) XXX-XX-XX</a></p>
+                     <div class="social-links">
+                        <a href="#">VK</a>
+                         <a href="#">Telegram</a>
+                     </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2024 FIFA </p>
+            </div>
+        </div>
+    </footer>
+     <script>
+         document.addEventListener('DOMContentLoaded', function() {
+             const footer = document.querySelector('footer');
+                function checkScroll() {
+                    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+                    footer.classList.add('visible');
+                    } else {
+                       footer.classList.remove('visible');
+                    }
+                }
+                window.addEventListener('scroll', checkScroll);
+                checkScroll();
+
+            const profileLogin = document.getElementById('profile-login');
+            const profileDate = document.getElementById('profile-date');
+            const profileGender = document.getElementById('profile-gender');
+            const profileScore = document.getElementById('profile-score');
+           
+            const profileNameSpan = document.getElementById('profileName');
+             const logoutButtonHeader = document.getElementById('logoutButton');
+
+            const userLogin = localStorage.getItem('userLogin');
+            const userDate = localStorage.getItem('userDate');
+            const userGender = localStorage.getItem('userGender');
+             const testScore = localStorage.getItem('testScore');
+
+            if (userLogin) {
+                profileLogin.textContent = userLogin;
+                profileNameSpan.textContent = userLogin;
+                logoutButtonHeader.style.display = 'inline-block';
+
+
+                 logoutButtonHeader.addEventListener('click', function() {
+                    localStorage.removeItem('userLogin');
+                    localStorage.removeItem('userDate');
+                    localStorage.removeItem('userGender');
+                     localStorage.removeItem('testScore');
+                    window.location.href = 'index.html';
+                   });
+           } else {
+               logoutButtonHeader.style.display = 'none';
+            }
+           if (userDate) {
+                profileDate.textContent = userDate;
+            }
+            if (userGender) {
+               profileGender.textContent = userGender;
+            }
+          if (testScore) {
+               profileScore.textContent = testScore;
+            } else {
+                profileScore.textContent = "0";
+            }
+
+
+});
+  </script>
+     <script src="js/main.js"></script>
+</body>
+</html>

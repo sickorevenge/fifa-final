@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тест</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/test.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <header>
+      <img src="img/logo.png" alt="Логотип FIFA" class="logo-img">
+        <nav>
+           <ul>
+            <li><a href="main.html">Главная</a></li>
+            <li><a href="description.html">Описание</a></li>
+            <li><a href="dictionary.html">Словарь</a></li>
+            <li><a href="slider.html">Галерея</a></li>
+             <li><a href="test.html">Тест</a></li>
+            <li><a href="profile.html">Профиль</a></li>
+            </ul>
+        </nav>
+        <div class="user-info">
+            <span class="profile-name" id="profileName"></span>
+            <button class="logout-btn" id="logoutButton">Выйти</button>
+        </div>
+    </header>
+    <main>
+        <section id="test">
+            <h2>Тест</h2>
+            <form id="quizForm" class="quiz-form">
+                <div class="quiz-question" id="question1">
+                    <p>Вопрос 1: Что такое "Финт Зидана"?</p>
+                    <div class="radio-group">
+                        <input type="radio" name="question1" id="answer1-1" value="Обманное движение корпусом">
+                         <label for="answer1-1">Обманное движение корпусом</label><br>
+                        <input type="radio" name="question1" id="answer1-2" value="Разворот на 360 градусов, используя подошву стопы для защиты мяча.">
+                         <label for="answer1-2">Разворот на 360 градусов, используя подошву стопы для защиты мяча.</label><br>
+                         <input type="radio" name="question1" id="answer1-3" value="Удар через себя, в прыжке.">
+                         <label for="answer1-3">Удар через себя, в прыжке.</label><br>
+                    </div>
+                      <div id="feedback1" class="feedback"></div>
+                </div>
+                <div class="quiz-question" id="question2">
+                    <p>Вопрос 2: Сколько игроков в основной стартовой одиннадцати?</p>
+                    <input type="number" class="answer-input" id="answer2" placeholder="Введите число">
+                    <div id="feedback2" class="feedback"></div>
+                </div>
+                 <div class="quiz-question" id="question3">
+                    <p>Вопрос 3: В каком году проходил Чемпионат мира по футболу в России?</p>
+                     <input type="text" class="answer-input" id="answer3" placeholder="Введите ответ">
+                    <div id="feedback3" class="feedback"></div>
+                </div>
+                <div class="quiz-question" id="question4">
+                    <p>Вопрос 4: Назовите одного из самых известных игроков ПСЖ?</p>
+                   <input type="text" class="answer-input" id="answer4" placeholder="Введите ответ">
+                    <div id="feedback4" class="feedback"></div>
+                </div>
+                <div class="quiz-question" id="question5">
+                    <p>Вопрос 5: Сколько офсайдов можно сделать за игру?</p>
+                      <div class="radio-group">
+                        <input type="radio" name="question5" id="answer5-1" value="0">
+                        <label for="answer5-1">0</label>
+                        <input type="radio" name="question5" id="answer5-2" value="1">
+                        <label for="answer5-2">1</label>
+                        <input type="radio" name="question5" id="answer5-3" value="1000">
+                        <label for="answer5-3">1000</label>
+                        <input type="radio" name="question5" id="answer5-4" value="11">
+                        <label for="answer5-4">11</label>
+                     </div>
+                    <div id="feedback5" class="feedback"></div>
+                </div>
+                 <div class="quiz-question" id="question6">
+                    <p>Вопрос 6: Кто стал лучшим бомбардиром в Лиге Чемпионов в 2015 году?</p>
+                       <div class="radio-group">
+                        <input type="radio" name="question6" id="answer6-1" value="Месси">
+                        <label for="answer6-1">Месси</label>
+                        <input type="radio" name="question6" id="answer6-2" value="Неймар">
+                        <label for="answer6-2">Неймар</label>
+                        <input type="radio" name="question6" id="answer6-3" value="Роналду">
+                        <label for="answer6-3">Роналду</label>
+                        <input type="radio" name="question6" id="answer6-4" value="Бензема">
+                         <label for="answer6-4">Бензема</label>
+                     </div>
+                     <div id="feedback6" class="feedback"></div>
+                </div>
+                 <div class="quiz-question" id="question7">
+                    <p>Вопрос 7: Какой номер у Роналду в Манчестер Юнайтед?</p>
+                    <input type="number" class="answer-input" id="answer7" placeholder="Введите число">
+                     <div id="feedback7" class="feedback"></div>
+                </div>
+                <button type="button" class="test-btn" id="checkButton">Проверить</button>
+                <div id="result"></div>
+                <button type="button" class="reset-btn" id="resetButton">Пройти заново</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+         <div class="footer-content">
+            <div class="contact-info">
+                 <h3>Контактные данные</h3>
+                    <p>Телефон: <a href="#">+7 (XXX) XXX-XX-XX</a></p>
+                     <div class="social-links">
+                        <a href="#">VK</a>
+                         <a href="#">Telegram</a>
+                     </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2024 FIFA </p>
+            </div>
+        </div>
+    </footer>
+         <script>
+ document.addEventListener('DOMContentLoaded', function() {
+     const footer = document.querySelector('footer');
+          function checkScroll() {
+            if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+            footer.classList.add('visible');
+            } else {
+               footer.classList.remove('visible');
+            }
+         }
+        window.addEventListener('scroll', checkScroll);
+        checkScroll();
+});
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const profileNameSpan = document.getElementById('profileName');
+    const logoutButton = document.getElementById('logoutButton');
+     const userLogin = localStorage.getItem('userLogin');
+   if (userLogin) {
+         profileNameSpan.textContent = userLogin;
+         logoutButton.style.display = 'inline-block';
+
+
+         logoutButton.addEventListener('click', function() {
+            localStorage.removeItem('userLogin');
+            localStorage.removeItem('userDate');
+            localStorage.removeItem('userGender');
+             localStorage.removeItem('testScore');
+            window.location.href = 'index.html';
+           });
+   } else {
+        logoutButton.style.display = 'none';
+    }
+});
+</script>
+<script src="js/test.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

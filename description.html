@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Описание</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <img src="img/logo.png" alt="Логотип FIFA" class="logo-img">
+        <nav>
+            <ul>
+                <li><a href="main.html">Главная</a></li>
+                <li><a href="description.html">Описание</a></li>
+                <li><a href="dictionary.html">Словарь</a></li>
+                 <li><a href="slider.html">Галерея</a></li>
+                <li><a href="test.html">Тест</a></li>
+                <li><a href="profile.html">Профиль</a></li>
+            </ul>
+        </nav>
+         <div class="user-info">
+            <span class="profile-name" id="profileName"></span>
+            <button class="logout-btn" id="logoutButton">Выйти</button>
+        </div>
+    </header>
+    <main>
+        <section id="description">
+            <h2>Описание</h2>
+             <p>Добро пожаловать в FIFA – интерактивный ресурс для фанатов футбольной серии FIFA! Здесь вы можете проверить свои знания о разных аспектах игры.
+                 У нас есть словарь терминов, галерея запоминающихся моментов, а также тест на знание игры. Присоединяйтесь, узнавайте новое и станьте экспертом FIFA!</p>
+        </section>
+    </main>
+    <footer>
+         <div class="footer-content">
+            <div class="contact-info">
+                 <h3>Контактные данные</h3>
+                    <p>Телефон: <a href="#">+7 (XXX) XXX-XX-XX</a></p>
+                     <div class="social-links">
+                        <a href="#">VK</a>
+                         <a href="#">Telegram</a>
+                     </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2024 FIFA </p>
+            </div>
+        </div>
+    </footer>
+         <script>
+ document.addEventListener('DOMContentLoaded', function() {
+     const footer = document.querySelector('footer');
+          function checkScroll() {
+            if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+            footer.classList.add('visible');
+            } else {
+               footer.classList.remove('visible');
+            }
+         }
+        window.addEventListener('scroll', checkScroll);
+        checkScroll();
+            const profileNameSpan = document.getElementById('profileName');
+              const logoutButton = document.getElementById('logoutButton');
+             const userLogin = localStorage.getItem('userLogin');
+           if (userLogin) {
+                 profileNameSpan.textContent = userLogin;
+                  logoutButton.style.display = 'inline-block';
+
+
+                 logoutButton.addEventListener('click', function() {
+                    localStorage.removeItem('userLogin');
+                    localStorage.removeItem('userDate');
+                    localStorage.removeItem('userGender');
+                     localStorage.removeItem('testScore');
+                    window.location.href = 'index.html';
+                   });
+           } else {
+                logoutButton.style.display = 'none';
+            }
+});
+  </script>
+    <script src="js/main.js"></script>
+</body>
+</html>

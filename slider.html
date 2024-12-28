@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Галерея</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/slider.css">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+     <header>
+        <img src="img/logo.png" alt="Логотип FIFA" class="logo-img">
+        <nav>
+           <ul>
+            <li><a href="main.html">Главная</a></li>
+            <li><a href="description.html">Описание</a></li>
+            <li><a href="dictionary.html">Словарь</a></li>
+            <li><a href="slider.html">Галерея</a></li>
+            <li><a href="test.html">Тест</a></li>
+             <li><a href="profile.html">Профиль</a></li>
+           </ul>
+        </nav>
+        <div class="user-info">
+            <span class="profile-name" id="profileName"></span>
+            <button class="logout-btn" id="logoutButton">Выйти</button>
+        </div>
+    </header>
+    <main>
+        <section id="gallery">
+           <h2>Галерея</h2>
+            <div class="slider-container">
+                <div class="slider">
+                    <div class="slide active" style="background-image: url('img/slide1.jpg');">
+                        <p class="slide-caption">Эволюция обложек FIFA</p>
+                    </div>
+                      <div class="slide" style="background-image: url('img/slide2.jpg');">
+                        <p class="slide-caption">Эволюция графики FIFA</p>
+                    </div>
+                      <div class="slide" style="background-image: url('img/slide3.jpg');">
+                       <p class="slide-caption">Состав команды в FUT</p>
+                     </div>
+                     <div class="slide" style="background-image: url('img/slide4.jpg');">
+                        <p class="slide-caption">FIFA в мире киберспорта</p>
+                      </div>
+                    <div class="slide" style="background-image: url('img/slide5.jpg');">
+                         <p class="slide-caption">Мем</p>
+                     </div>
+                </div>
+               <div class="slider-controls">
+                <button id="prevSlide" class="slider-button prev">Предыдущий</button>
+                <span id="slideNumber" class="slide-number">1 из 5</span>
+                <button id="nextSlide" class="slider-button next">Следующий</button>
+            </div>
+          </div>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <div class="contact-info">
+                 <h3>Контактные данные</h3>
+                    <p>Телефон: <a href="#">+7 (XXX) XXX-XX-XX</a></p>
+                     <div class="social-links">
+                        <a href="#">VK</a>
+                         <a href="#">Telegram</a>
+                     </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2024 FIFA </p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+             const footer = document.querySelector('footer');
+                function checkScroll() {
+                    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+                    footer.classList.add('visible');
+                    } else {
+                       footer.classList.remove('visible');
+                    }
+                }
+                window.addEventListener('scroll', checkScroll);
+                checkScroll();
+
+            const slider = document.querySelector('.slider');
+            const slides = document.querySelectorAll('.slide');
+            const prevButton = document.querySelector('.prev');
+            const nextButton = document.querySelector('.next');
+            let currentSlide = 0;
+             const profileNameSpan = document.getElementById('profileName');
+             const logoutButton = document.getElementById('logoutButton');
+             const userLogin = localStorage.getItem('userLogin');
+           if (userLogin) {
+                 profileNameSpan.textContent = userLogin;
+                 logoutButton.style.display = 'inline-block';
+
+
+                 logoutButton.addEventListener('click', function() {
+                    localStorage.removeItem('userLogin');
+                    localStorage.removeItem('userDate');
+                    localStorage.removeItem('userGender');
+                     localStorage.removeItem('testScore');
+                    window.location.href = 'index.html';
+                   });
+           } else {
+                 logoutButton.style.display = 'none';
+            }
+
+           function showSlide(n) {
+             slides.forEach(slide => slide.classList.remove('active'));
+              slides[n].classList.add('active');
+            }
+
+            function nextSlide() {
+                 currentSlide = (currentSlide + 1) % slides.length;
+                 showSlide(currentSlide);
+            }
+
+            function prevSlide() {
+                currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+                showSlide(currentSlide);
+            }
+
+            nextButton.addEventListener('click', nextSlide);
+            prevButton.addEventListener('click', prevSlide);
+
+            showSlide(currentSlide);
+});
+    </script>
+     <script src="js/main.js"></script>
+    <script src="js/slider.js"></script>
+</body>
+</html>
